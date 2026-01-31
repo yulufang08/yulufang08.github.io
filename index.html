@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="siteTitle">yulufang.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a href="#" class="nav-brand" data-section="home">yulufang.com</a>
+      <ul class="nav-links">
+        <li><a href="#" data-section="about" data-i18n="navAbout">关于我</a></li>
+        <li><a href="#" data-section="articles" data-i18n="navArticles">文章</a></li>
+        <li><a href="#" data-section="videos" data-i18n="navVideos">视频</a></li>
+        <li><a href="#" data-section="misc" data-i18n="navMisc">Miscellaneous</a></li>
+      </ul>
+      <div class="header-actions">
+        <button type="button" class="btn-icon btn-lang" aria-label="Switch language" title="中文 / English">
+          <span class="lang-label" data-i18n="langLabel">EN</span>
+        </button>
+        <button type="button" class="btn-icon btn-theme" aria-label="Toggle theme">
+          <span class="theme-icon sun" aria-hidden="true">☀</span>
+          <span class="theme-icon moon" aria-hidden="true">☽</span>
+        </button>
+        <a href="anonymous.html" target="_blank" rel="noopener noreferrer" class="btn-anonymous" data-i18n="navAnonymous">
+          匿名建议
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section id="home" class="section section-hero active">
+      <h1 class="hero-title" data-i18n="heroTitle">你好，欢迎来到这里</h1>
+      <p class="hero-subtitle" data-i18n="heroSubtitle">个人空间 · 文章 · 视频 · 杂项</p>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section-title" data-i18n="aboutTitle">关于我</h2>
+      <div class="section-content about-content">
+        <p data-i18n="aboutIntro">这里可以写一段简短的自我介绍，你的经历、兴趣或正在做的事。支持中英文切换与深色/浅色主题。</p>
+        <p data-i18n="aboutPlaceholder">（替换为你的真实内容即可。）</p>
+      </div>
+    </section>
+
+    <section id="articles" class="section">
+      <h2 class="section-title" data-i18n="articlesTitle">文章</h2>
+      <div class="section-content articles-grid">
+        <article class="card">
+          <h3 data-i18n="article1Title">示例文章一</h3>
+          <p data-i18n="article1Desc">简短描述。可链接到外部或站内文章。</p>
+          <a href="#" class="card-link" data-i18n="readMore">阅读更多</a>
+        </article>
+        <article class="card">
+          <h3 data-i18n="article2Title">示例文章二</h3>
+          <p data-i18n="article2Desc">另一篇示例，方便你后续替换成自己的文章列表。</p>
+          <a href="#" class="card-link" data-i18n="readMore">阅读更多</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="videos" class="section">
+      <h2 class="section-title" data-i18n="videosTitle">视频</h2>
+      <div class="section-content videos-grid">
+        <article class="card card-video">
+          <div class="video-placeholder">▶</div>
+          <h3 data-i18n="video1Title">示例视频</h3>
+          <p data-i18n="video1Desc">可嵌入 B站 / YouTube 或放链接。</p>
+        </article>
+        <article class="card card-video">
+          <div class="video-placeholder">▶</div>
+          <h3 data-i18n="video2Title">另一则视频</h3>
+          <p data-i18n="video2Desc">替换为你的视频标题与链接。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="misc" class="section">
+      <h2 class="section-title" data-i18n="miscTitle">Miscellaneous</h2>
+      <div class="section-content misc-content">
+        <p data-i18n="miscIntro">杂项：链接、工具、小项目或任何你想放的内容。</p>
+        <ul class="misc-list">
+          <li><a href="#" data-i18n="miscItem1">链接一</a></li>
+          <li><a href="#" data-i18n="miscItem2">链接二</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footerNote">欢迎通过 <a href="anonymous.html" target="_blank" rel="noopener noreferrer">匿名建议</a> 向我反馈。</p>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

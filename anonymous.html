@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="anonymousTitle">匿名建议</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" style="justify-content: center;">
+      <a href="index.html" class="nav-brand" data-section="home">yulufang.com</a>
+      <div class="header-actions" style="margin-left: auto;">
+        <button type="button" class="btn-icon btn-lang" aria-label="Switch language">
+          <span class="lang-label" data-i18n="langLabel">EN</span>
+        </button>
+        <button type="button" class="btn-icon btn-theme" aria-label="Toggle theme">
+          <span class="theme-icon sun" aria-hidden="true">☀</span>
+          <span class="theme-icon moon" aria-hidden="true">☽</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main page-anonymous">
+    <h1 class="section-title" data-i18n="anonymousTitle">匿名建议</h1>
+    <p class="section-content" data-i18n="anonymousIntro">
+      欢迎任何人匿名向我提出任何建议、想法或反馈。此页面可在无痕/匿名窗口中打开。
+    </p>
+
+    <div class="anonymous-notice" data-i18n="anonymousHint">
+      完全匿名，不收集身份信息。
+    </div>
+
+    <div id="form-wrap">
+      <form id="anonymous-form" class="section-content">
+        <div class="form-group">
+          <label for="message" data-i18n="anonymousLabel">你的建议（可选留空）</label>
+          <textarea id="message" name="message" rows="6" placeholder="输入你的建议…"></textarea>
+          <p class="hint" data-i18n="anonymousHint">完全匿名，不收集身份信息。</p>
+        </div>
+        <button type="submit" class="btn-submit" data-i18n="anonymousSubmit">提交</button>
+      </form>
+    </div>
+
+    <div id="success-msg" class="message-success" style="display: none;" data-i18n="anonymousSuccess">
+      感谢你的反馈！
+    </div>
+
+    <a href="index.html" class="back-link" data-i18n="anonymousBack">返回首页</a>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footerNote">欢迎通过 匿名建议 向我反馈。</p>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script>
+    (function () {
+      const THEME_KEY = 'theme';
+      function getTheme() {
+        var stored = localStorage.getItem(THEME_KEY);
+        if (stored === 'dark' || stored === 'light') return stored;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      function setTheme(theme) {
+        if (theme !== 'dark' && theme !== 'light') return;
+        localStorage.setItem(THEME_KEY, theme);
+        document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : '');
+      }
+      function toggleTheme() {
+        setTheme(getTheme() === 'dark' ? 'light' : 'dark');
+      }
+      document.documentElement.setAttribute('data-theme', getTheme() === 'dark' ? 'dark' : '');
+      document.querySelector('.btn-lang')?.addEventListener('click', function () {
+        if (window.i18n) window.i18n.toggleLang();
+      });
+      document.querySelector('.btn-theme')?.addEventListener('click', toggleTheme);
+    })();
+  </script>
+  <script>
+    (function () {
+      var form = document.getElementById('anonymous-form');
+      var formWrap = document.getElementById('form-wrap');
+      var successMsg = document.getElementById('success-msg');
+      var textarea = document.getElementById('message');
+
+      function applyPlaceholder() {
+        if (window.i18n && textarea) {
+          textarea.placeholder = window.i18n.t('anonymousPlaceholder');
+        }
+      }
+      if (window.i18n) {
+        applyPlaceholder();
+        window.onLangChange = function () { applyPlaceholder(); };
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var message = (textarea && textarea.value) ? textarea.value.trim() : '';
+        console.log('Anonymous feedback:', message || '(empty)');
+        formWrap.style.display = 'none';
+        successMsg.style.display = 'block';
+      });
+    })();
+  </script>
+</body>
+</html>
