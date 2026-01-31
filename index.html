@@ -4,19 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="siteTitle">yulufang.com</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
     <nav class="nav" aria-label="Main">
-      <a href="#" class="nav-brand" data-section="home">yulufang.com</a>
+      <a href="#" class="nav-brand" data-section="home">yulufang</a>
       <ul class="nav-links">
-        <li><a href="#" data-section="about" data-i18n="navAbout">关于我</a></li>
-        <li><a href="#" data-section="articles" data-i18n="navArticles">文章</a></li>
-        <li><a href="#" data-section="videos" data-i18n="navVideos">视频</a></li>
+        <li><a href="#" data-section="home" data-i18n="navHome">Home</a></li>
+        <li><a href="#" data-section="publications" data-i18n="navPublications">Publications</a></li>
         <li><a href="#" data-section="misc" data-i18n="navMisc">Miscellaneous</a></li>
       </ul>
       <div class="header-actions">
@@ -27,69 +23,158 @@
           <span class="theme-icon sun" aria-hidden="true">☀</span>
           <span class="theme-icon moon" aria-hidden="true">☽</span>
         </button>
-        <a href="anonymous.html" target="_blank" rel="noopener noreferrer" class="btn-anonymous" data-i18n="navAnonymous">
-          匿名建议
-        </a>
+        <a href="anonymous.html" target="_blank" rel="noopener noreferrer" class="btn-anonymous" data-i18n="navAnonymous">匿名建议</a>
       </div>
     </nav>
   </header>
 
-  <main class="main">
-    <section id="home" class="section section-hero active">
-      <h1 class="hero-title" data-i18n="heroTitle">你好，欢迎来到这里</h1>
-      <p class="hero-subtitle" data-i18n="heroSubtitle">个人空间 · 文章 · 视频 · 杂项</p>
-    </section>
+  <main class="main main-academic">
+    <section id="home" class="section section-home active">
+      <div class="section-box first-box">
+        <h2 class="block-title block-title-first" data-i18n="aboutTitle">About Me</h2>
+        <div class="hero-two-col">
+          <div class="hero-left">
+            <h1 class="hero-name" data-i18n="heroName">Your Name</h1>
+            <p class="hero-affiliation" data-i18n="heroAffiliation">Title @ Institution</p>
+            <div class="hero-intro section-content">
+              <p data-i18n="aboutIntro">简短自我介绍：经历、兴趣或正在做的事。可多段。</p>
+            </div>
+            <div class="social-links">
+              <a href="mailto:your@email.com" class="social-link" aria-label="Email">
+                <span class="social-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </span>
+                <span class="social-label" data-i18n="socialEmail">your@email.com</span>
+              </a>
+              <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Google Scholar">
+                <span class="social-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h5"/></svg>
+                </span>
+                <span class="social-label" data-i18n="socialScholar">Google Scholar</span>
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                <span class="social-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.545 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </span>
+                <span class="social-label">GitHub</span>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
+                <span class="social-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </span>
+                <span class="social-label">Twitter</span>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                <span class="social-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </span>
+                <span class="social-label">LinkedIn</span>
+              </a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-photo-wrap">
+              <div class="hero-photo-placeholder" aria-hidden="true">Photo</div>
+              <p class="hero-photo-caption" data-i18n="heroPhotoCaption">替换为你的照片说明</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <section id="about" class="section">
-      <h2 class="section-title" data-i18n="aboutTitle">关于我</h2>
-      <div class="section-content about-content">
-        <p data-i18n="aboutIntro">这里可以写一段简短的自我介绍，你的经历、兴趣或正在做的事。支持中英文切换与深色/浅色主题。</p>
-        <p data-i18n="aboutPlaceholder">（替换为你的真实内容即可。）</p>
+      <div class="section-box sub-box">
+        <h3 class="subsec-title" data-i18n="secEducation">Education</h3>
+        <ul class="academic-list">
+          <li class="academic-item">
+            <span class="item-left">
+              <span class="item-org" data-i18n="eduOrg1">Institution Name</span>
+              <span class="item-detail" data-i18n="eduDetail1">Degree, Major</span>
+            </span>
+            <span class="item-date" data-i18n="eduDate1">Sep. 20XX – Jun. 20XX</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-box sub-box">
+        <h3 class="subsec-title" data-i18n="secExperience">Experience</h3>
+        <ul class="academic-list">
+          <li class="academic-item">
+            <span class="item-left">
+              <span class="item-org" data-i18n="expOrg1">Organization</span>
+              <span class="item-detail" data-i18n="expDetail1">Role / Title</span>
+            </span>
+            <span class="item-date" data-i18n="expDate1">Month Year – Month Year</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-box sub-box">
+        <h3 class="subsec-title" data-i18n="secHonors">Honors &amp; Awards</h3>
+        <ul class="academic-list">
+          <li class="academic-item">
+            <span class="item-left">
+              <span class="item-detail" data-i18n="honor1">Award name</span>
+            </span>
+            <span class="item-date" data-i18n="honorDate1">Year</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-box sub-box">
+        <h3 class="subsec-title" data-i18n="secNews">News</h3>
+        <ul class="academic-list">
+          <li class="academic-item">
+            <span class="item-left">
+              <span class="item-detail" data-i18n="news1">News item.</span>
+            </span>
+            <span class="item-date" data-i18n="newsDate1">Month Year</span>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section id="articles" class="section">
-      <h2 class="section-title" data-i18n="articlesTitle">文章</h2>
-      <div class="section-content articles-grid">
-        <article class="card">
-          <h3 data-i18n="article1Title">示例文章一</h3>
-          <p data-i18n="article1Desc">简短描述。可链接到外部或站内文章。</p>
-          <a href="#" class="card-link" data-i18n="readMore">阅读更多</a>
-        </article>
-        <article class="card">
-          <h3 data-i18n="article2Title">示例文章二</h3>
-          <p data-i18n="article2Desc">另一篇示例，方便你后续替换成自己的文章列表。</p>
-          <a href="#" class="card-link" data-i18n="readMore">阅读更多</a>
-        </article>
-      </div>
-    </section>
-
-    <section id="videos" class="section">
-      <h2 class="section-title" data-i18n="videosTitle">视频</h2>
-      <div class="section-content videos-grid">
-        <article class="card card-video">
-          <div class="video-placeholder">▶</div>
-          <h3 data-i18n="video1Title">示例视频</h3>
-          <p data-i18n="video1Desc">可嵌入 B站 / YouTube 或放链接。</p>
-        </article>
-        <article class="card card-video">
-          <div class="video-placeholder">▶</div>
-          <h3 data-i18n="video2Title">另一则视频</h3>
-          <p data-i18n="video2Desc">替换为你的视频标题与链接。</p>
-        </article>
+    <section id="publications" class="section">
+      <div class="section-box publications-section">
+        <h2 class="block-title block-title-major" data-i18n="secPublications">Publications</h2>
+        <p class="pub-note">(* indicates equal contribution, † indicates corresponding author)</p>
+        <div class="section-content">
+          <ul class="pub-list-new">
+            <li class="pub-item-new">
+              <div class="pub-thumb">
+                <img src="https://via.placeholder.com/160x100?text=Paper" alt="Paper thumbnail">
+              </div>
+              <div class="pub-info">
+                <p class="pub-title">Paper Title Here</p>
+                <p class="pub-authors">Author One*, Author Two*, Author Three†</p>
+                <p class="pub-venue"><em>Conference / Journal Name</em>, Year</p>
+                <p class="pub-links">
+                  <a href="#" class="pub-link">[abs]</a>
+                  <a href="#" class="pub-link">[arXiv]</a>
+                  <a href="#" class="pub-link">[website]</a>
+                  <a href="#" class="pub-link">[code]</a>
+                  <a href="#" class="pub-link">[video]</a>
+                  <a href="#" class="pub-link">[poster]</a>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section id="misc" class="section">
-      <h2 class="section-title" data-i18n="miscTitle">Miscellaneous</h2>
-      <div class="section-content misc-content">
-        <p data-i18n="miscIntro">杂项：链接、工具、小项目或任何你想放的内容。</p>
-        <ul class="misc-list">
-          <li><a href="#" data-i18n="miscItem1">链接一</a></li>
-          <li><a href="#" data-i18n="miscItem2">链接二</a></li>
-        </ul>
+      <div class="section-box">
+        <h2 class="block-title" data-i18n="miscTitle">Miscellaneous</h2>
+        <div class="section-content misc-content">
+          <p data-i18n="miscIntro">杂项：链接、工具、小项目或任何你想放的内容。</p>
+          <ul class="misc-list">
+            <li><a href="#" data-i18n="miscItem1">链接一</a></li>
+            <li><a href="#" data-i18n="miscItem2">链接二</a></li>
+          </ul>
+        </div>
       </div>
     </section>
+
+    <p class="last-updated" data-i18n="lastUpdated">Last updated: Month Year</p>
   </main>
 
   <footer class="site-footer">
