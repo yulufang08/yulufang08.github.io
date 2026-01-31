@@ -545,6 +545,25 @@ body {
   }
 }
 
+/* ========== Visitor Map ========== */
+.visitor-map-box {
+  text-align: center;
+}
+
+.visitor-map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  padding: 1rem 0;
+}
+
+.visitor-placeholder {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
 /* ========== Last updated ========== */
 .last-updated {
   margin-top: 2.5rem;

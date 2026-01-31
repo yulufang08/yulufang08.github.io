@@ -19,6 +19,7 @@
     secHonors: 'Honors & Awards',
     secPublications: 'Publications',
     secNews: 'News',
+    secVisitors: 'Visitor Map',
     eduOrg1: 'Institution Name',
     eduDetail1: 'Degree, Major',
     eduDate1: 'Sep. 20XX – Jun. 20XX',
