@@ -606,15 +606,24 @@ body {
 /* ========== Footer ========== */
 .site-footer {
   text-align: center;
-  padding: 1.5rem;
-  border-top: 1px solid var(--bg-card);
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  background: var(--bg);
+  padding: 1.5rem 1.5rem 1rem;
+  font-size: 1rem;
+  color: #e8e6e3;
+  background: #1a1a1a;
+}
+
+.site-footer p {
+  margin: 0 0 0.5rem;
+}
+
+.site-footer .copyright {
+  font-size: 0.95rem;
+  color: #9a9894;
+  margin-bottom: 0;
 }
 
 .site-footer a {
-  color: var(--accent);
+  color: #60a5fa;
   text-decoration: none;
 }
 

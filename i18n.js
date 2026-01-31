@@ -43,6 +43,7 @@
     miscItem2: 'Link two',
     lastUpdated: 'Last updated: Jan. 2026',
     footerNote: 'Feel free to send feedback via Anonymous Feedback.',
+    copyright: '© 2026 Yulu Fang. Powered by GitHub Pages.',
     anonymousTitle: 'Anonymous Feedback',
     anonymousIntro: 'Anyone can anonymously send suggestions, ideas, or feedback. Open this page in a private/incognito window if you prefer.',
     anonymousLabel: 'Your message (optional)',
