@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="anonymousTitle">匿名建议</title>
+  <title data-i18n="anonymousTitle">Anonymous Feedback</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,11 +12,8 @@
 <body>
   <header class="site-header">
     <nav class="nav" style="justify-content: center;">
-      <a href="index.html" class="nav-brand" data-section="home">yulufang.com</a>
+      <a href="index.html" class="nav-brand" data-section="home">Yulu Fang</a>
       <div class="header-actions" style="margin-left: auto;">
-        <button type="button" class="btn-icon btn-lang" aria-label="Switch language">
-          <span class="lang-label" data-i18n="langLabel">EN</span>
-        </button>
         <button type="button" class="btn-icon btn-theme" aria-label="Toggle theme">
           <span class="theme-icon sun" aria-hidden="true">☀</span>
           <span class="theme-icon moon" aria-hidden="true">☽</span>
@@ -26,35 +23,30 @@
   </header>
 
   <main class="main page-anonymous">
-    <h1 class="section-title" data-i18n="anonymousTitle">匿名建议</h1>
+    <h1 class="section-title" data-i18n="anonymousTitle">Anonymous Feedback</h1>
     <p class="section-content" data-i18n="anonymousIntro">
-      欢迎任何人匿名向我提出任何建议、想法或反馈。此页面可在无痕/匿名窗口中打开。
+      Anyone can anonymously send suggestions, ideas, or feedback. Open this page in a private/incognito window if you prefer.
     </p>
-
-    <div class="anonymous-notice" data-i18n="anonymousHint">
-      完全匿名，不收集身份信息。
-    </div>
 
     <div id="form-wrap">
       <form id="anonymous-form" class="section-content">
         <div class="form-group">
-          <label for="message" data-i18n="anonymousLabel">你的建议（可选留空）</label>
-          <textarea id="message" name="message" rows="6" placeholder="输入你的建议…"></textarea>
-          <p class="hint" data-i18n="anonymousHint">完全匿名，不收集身份信息。</p>
+          <label for="message" data-i18n="anonymousLabel">Your message (optional)</label>
+          <textarea id="message" name="message" rows="6" placeholder="Type your suggestion…"></textarea>
         </div>
-        <button type="submit" class="btn-submit" data-i18n="anonymousSubmit">提交</button>
+        <button type="submit" class="btn-submit" data-i18n="anonymousSubmit">Submit</button>
       </form>
     </div>
 
     <div id="success-msg" class="message-success" style="display: none;" data-i18n="anonymousSuccess">
-      感谢你的反馈！
+      Thank you for your feedback!
     </div>
 
-    <a href="index.html" class="back-link" data-i18n="anonymousBack">返回首页</a>
+    <a href="index.html" class="back-link" data-i18n="anonymousBack">Back to home</a>
   </main>
 
   <footer class="site-footer">
-    <p data-i18n="footerNote">欢迎通过 匿名建议 向我反馈。</p>
+    <p data-i18n="footerNote">Feel free to send feedback via Anonymous Feedback.</p>
   </footer>
 
   <script src="i18n.js"></script>
@@ -75,9 +67,6 @@
         setTheme(getTheme() === 'dark' ? 'light' : 'dark');
       }
       document.documentElement.setAttribute('data-theme', getTheme() === 'dark' ? 'dark' : '');
-      document.querySelector('.btn-lang')?.addEventListener('click', function () {
-        if (window.i18n) window.i18n.toggleLang();
-      });
       document.querySelector('.btn-theme')?.addEventListener('click', toggleTheme);
     })();
   </script>
@@ -95,7 +84,6 @@
       }
       if (window.i18n) {
         applyPlaceholder();
-        window.onLangChange = function () { applyPlaceholder(); };
       }
 
       form.addEventListener('submit', function (e) {

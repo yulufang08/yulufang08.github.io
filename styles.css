@@ -1,6 +1,6 @@
 /* ========== Variables (Light / Dark) ========== */
 :root {
-  --bg: #f7f7f7;
+  --bg: #fafafa;
   --bg-card: #ffffff;
   --text: #1a1a1a;
   --text-muted: #555;
@@ -55,10 +55,15 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--bg);
-  border-bottom: 1px solid var(--bg-card);
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
   padding: 0.75rem 1.5rem;
   transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .site-header {
+  background: #1e1f22;
+  border-bottom-color: #2a2b2e;
 }
 
 .nav {
@@ -292,11 +297,6 @@ body {
 .social-icon {
   display: inline-flex;
   flex-shrink: 0;
-  color: var(--text-muted);
-}
-
-.social-link:hover .social-icon {
-  color: var(--accent);
 }
 
 .social-icon svg {
@@ -388,10 +388,27 @@ body {
 .sub-box .academic-item {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 0.25rem 1rem;
   margin-bottom: 0.75rem;
+}
+
+/* School/org logo */
+.item-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.academic-item.with-logo {
+  align-items: center;
+}
+
+.academic-item.with-logo .item-left {
+  flex: 1;
 }
 
 .sub-box .item-left {

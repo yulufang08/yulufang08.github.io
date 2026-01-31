@@ -47,9 +47,6 @@
       });
     });
 
-    document.querySelector('.btn-lang')?.addEventListener('click', function () {
-      if (window.i18n) window.i18n.toggleLang();
-    });
 
     document.querySelector('.btn-theme')?.addEventListener('click', function () {
       toggleTheme();
