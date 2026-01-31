@@ -9,3 +9,5 @@ git remote add origin https://github.com/yulufang08/yulufang.github.io.git
 git add .
 git commit -m "update site"
 git push
+
+你把我当作零基础的人，逐行解释，并告诉我可自定义的地方
