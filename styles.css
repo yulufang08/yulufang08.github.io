@@ -26,6 +26,16 @@
   --shadow-hover: none;
 }
 
+/* ========== Loading state (prevent FOUC) ========== */
+.js-loading {
+  opacity: 0;
+}
+
+.js-loaded {
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+
 /* ========== Base ========== */
 *,
 *::before,

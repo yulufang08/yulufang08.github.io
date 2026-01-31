@@ -18,6 +18,9 @@
     secExperience: 'Experience',
     secHonors: 'Honors & Awards',
     secPublications: 'Publications',
+    secNews: 'Recent News',
+    news1: 'News item description.',
+    newsDate1: 'Month Year',
     secService: 'Service',
     secVisitors: 'Visitor Map',
     eduOrg1: 'Institution Name',
@@ -67,6 +70,10 @@
   }
 
   applyTranslations();
+
+  // Remove loading state to show content
+  document.body.classList.remove('js-loading');
+  document.body.classList.add('js-loaded');
 
   window.i18n = {
     t: function (key) {
