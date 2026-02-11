@@ -11,7 +11,7 @@
     heroAffiliation: 'Shanghai Jiao Tong University',
     heroPhotoCaption: 'Replace with your photo caption',
     aboutIntro: 'Short intro: background, interests, or what you\'re up to. Multiple paragraphs OK.',
-    socialEmail: '<lower-case_firstname>fang[at]sjtu.edu.cn',
+    socialEmail: 'yulufang[at]sjtu[dot]edu[dot]cn',
     socialScholar: 'Google Scholar',
     aboutTitle: 'About Me',
     secEducation: 'Education',
