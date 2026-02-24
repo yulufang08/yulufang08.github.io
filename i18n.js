@@ -46,7 +46,7 @@
     copyright: '© 2026 Yulu Fang. Powered by GitHub Pages.',
     anonymousTitle: 'Anonymous Feedback',
     anonymousIntro: 'Anyone can anonymously send suggestions, ideas, or feedback. Open this page in a private/incognito window if you prefer.',
-    anonymousLabel: 'Your message (optional)',
+    anonymousLabel: 'Your message',
     anonymousPlaceholder: 'Type your suggestion…',
     anonymousHint: 'Fully anonymous; no identity is collected.',
     anonymousSubmit: 'Submit',
