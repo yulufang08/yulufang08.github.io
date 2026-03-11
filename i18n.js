@@ -10,7 +10,7 @@
     heroName: 'Yulu Fang',
     heroAffiliation: 'Shanghai Jiao Tong University',
     heroPhotoCaption: 'Replace with your photo caption',
-    aboutIntro: 'Short intro: Hello! I am yulu, a second-year Master student at School of Oceanography(SOO), SJTU. ',
+    aboutIntro: 'Hello! I am yulu, a second-year Master student at School of Oceanography(SOO), SJTU. ',
     socialEmail: 'yulufang[at]sjtu[dot]edu[dot]cn',
     socialScholar: 'Google Scholar',
     aboutTitle: 'About Me',
