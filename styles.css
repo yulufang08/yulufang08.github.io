@@ -57,7 +57,7 @@ body {
   background-image: url('images/6.jpg');
   background-attachment: fixed;
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -417,6 +417,12 @@ body::before {
   object-fit: contain;
   margin-right: 0.5rem;
   flex-shrink: 0;
+}
+
+/* Adjust second logo (Hebei University) to match size */
+.academic-list .academic-item:nth-child(2) .item-logo {
+  width: 40px;
+  height: 40px;
 }
 
 .academic-item.with-logo {
