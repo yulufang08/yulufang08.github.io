@@ -419,10 +419,10 @@ body::before {
   flex-shrink: 0;
 }
 
-/* Adjust second logo (Hebei University) to match size */
+/* Adjust second logo (Hebei University) to match visual size */
 .academic-list .academic-item:nth-child(2) .item-logo {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
 }
 
 .academic-item.with-logo {
