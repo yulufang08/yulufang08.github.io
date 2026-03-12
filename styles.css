@@ -412,17 +412,11 @@ body::before {
 
 /* School/org logo */
 .item-logo {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
   margin-right: 0.5rem;
   flex-shrink: 0;
-}
-
-/* Adjust second logo (Hebei University) to match visual size */
-.academic-list .academic-item:nth-child(2) .item-logo {
-  width: 45px;
-  height: 45px;
 }
 
 .academic-item.with-logo {
