@@ -91,9 +91,34 @@
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var message = (textarea && textarea.value) ? textarea.value.trim() : '';
-        console.log('Anonymous feedback:', message || '(empty)');
-        formWrap.style.display = 'none';
-        successMsg.style.display = 'block';
+
+        if (!message) {
+          alert('Please enter a message');
+          return;
+        }
+
+        // Submit feedback to backend
+        fetch('/api/feedback', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: message })
+        })
+        .then(function(response) {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.json();
+        })
+        .then(function(data) {
+          console.log('Feedback submitted successfully:', data);
+          formWrap.style.display = 'none';
+          successMsg.style.display = 'block';
+          textarea.value = '';
+        })
+        .catch(function(error) {
+          console.error('Error submitting feedback:', error);
+          alert('Failed to submit feedback. Please try again.');
+        });
       });
     })();
   </script>
