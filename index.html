@@ -249,8 +249,8 @@
               </ul>
             </div>
 
-            <!-- Web UI 使用说明 -->
-            <div style="background: #fef3c7; padding: 12px 15px; border-radius: 6px; margin-bottom: 15px; border-left: 3px solid #f59e0b;">
+            <!-- Web UI 使用说明 (已隐藏) -->
+            <!-- <div style="background: #fef3c7; padding: 12px 15px; border-radius: 6px; margin-bottom: 15px; border-left: 3px solid #f59e0b;">
               <p style="margin: 0 0 8px 0; color: #92400e; font-weight: 600; font-size: 13px;">⚡ 如何使用 Web UI</p>
               <ol style="margin: 0; padding-left: 20px; color: #92400e; font-size: 13px;">
                 <li style="margin: 4px 0;">打开终端，进入项目目录</li>
@@ -258,7 +258,7 @@
                 <li style="margin: 4px 0;">点击下方"🚀 启动 Web UI"按钮</li>
                 <li style="margin: 4px 0;">在弹出窗口中输入 API Key 开始使用</li>
               </ol>
-            </div>
+            </div> -->
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
               <button id="finagent-launch-btn"
@@ -313,7 +313,7 @@
             const closeBtn = document.getElementById('finagent-close-btn');
             const iframe = document.getElementById('finagent-iframe');
 
-            const FINAGENT_URL = 'http://localhost:5000';
+            const FINAGENT_URL = 'http://127.0.0.1:5000';
 
             // 检查服务状态
             function checkFinagentStatus() {
