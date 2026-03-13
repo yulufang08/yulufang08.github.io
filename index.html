@@ -221,15 +221,104 @@
     <section id="misc" class="section">
       <div class="section-box">
         <h2 class="block-title" data-i18n="miscTitle">Miscellaneous</h2>
-        <!-- TODO: fill in Miscellaneous content
         <div class="section-content misc-content">
-          <p data-i18n="miscIntro">杂项：链接、工具、小项目或任何你想放的内容。</p>
-          <ul class="misc-list">
-            <li><a href="#" data-i18n="miscItem1">链接一</a></li>
-            <li><a href="#" data-i18n="miscItem2">链接二</a></li>
-          </ul>
+          <h3 style="margin-top: 30px; color: var(--primary-color);">🔬 FinAgent - 自主化产业研究系统</h3>
+          <p style="color: var(--text-secondary); margin: 15px 0;">
+            一个智能产业分析工具，结合 LangGraph 多 Agent 协作、混合检索、联网搜索和深度分析。
+            自动完成行业研究、数据收集、结构化分析和报告生成。
+          </p>
+          <div style="background: rgba(37, 99, 235, 0.05); padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid var(--primary-color);">
+            <p><strong>核心特性：</strong></p>
+            <ul style="margin: 10px 0 0 20px; color: var(--text-secondary);">
+              <li>✨ <strong>LangGraph 状态机</strong> - 支持 Self-Correction 循环的 Agent 协作</li>
+              <li>🔍 <strong>混合检索</strong> - BM25 + Vector Search + RRF 融合</li>
+              <li>🌐 <strong>联网搜索</strong> - 实时获取最新行业数据，注重信源权威性</li>
+              <li>📊 <strong>多维分析</strong> - 产业链、竞争格局、财务数据等深度分析</li>
+              <li>📄 <strong>结构化报告</strong> - 每个结论附带来源追溯 [snippet-id]</li>
+              <li>🔐 <strong>身份认证</strong> - 仅授权用户可使用（保护 Token 消耗）</li>
+            </ul>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0;">
+            <!-- FinAgent Web UI -->
+            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;"
+                 onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.15)';"
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">
+              <h4 style="color: var(--primary-color); margin-bottom: 10px;">🎨 Web UI (本人专用)</h4>
+              <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">
+                直观的产业研究界面。输入关键词，获得深度分析报告和权威数据来源。
+              </p>
+              <div style="display: flex; gap: 10px;">
+                <a href="http://localhost:5000" target="_blank" style="flex: 1; padding: 10px; background: var(--primary-color); color: white; text-align: center; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.3s;"
+                   onmouseover="this.style.background='#1e40af';"
+                   onmouseout="this.style.background='var(--primary-color)';">
+                  打开应用
+                </a>
+                <a href="https://github.com/yourusername/Agent_application" target="_blank" style="padding: 10px 15px; border: 1px solid var(--primary-color); color: var(--primary-color); border-radius: 6px; text-decoration: none; transition: all 0.3s;"
+                   onmouseover="this.style.background='rgba(37, 99, 235, 0.1)';"
+                   onmouseout="this.style.background='transparent';">
+                  源码
+                </a>
+              </div>
+              <p style="color: #ef4444; font-size: 12px; margin-top: 10px;">
+                ⚠️ 仅限本人使用（消耗 Token）
+              </p>
+            </div>
+
+            <!-- GitHub 项目 -->
+            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;"
+                 onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.15)';"
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">
+              <h4 style="color: var(--primary-color); margin-bottom: 10px;">📦 GitHub 项目</h4>
+              <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">
+                完整源代码、架构设计文档和部署指南。欢迎 star、fork 和学习。
+              </p>
+              <a href="https://github.com/yourusername/Agent_application" target="_blank" style="display: block; padding: 10px; background: #24292f; color: white; text-align: center; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.3s;"
+                 onmouseover="this.style.background='#000';"
+                 onmouseout="this.style.background='#24292f';">
+                View on GitHub
+              </a>
+              <p style="color: var(--text-secondary); font-size: 12px; margin-top: 10px;">
+                所有人可访问 • 完全开源
+              </p>
+            </div>
+
+            <!-- 技术文档 -->
+            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;"
+                 onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.15)';"
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';">
+              <h4 style="color: var(--primary-color); margin-bottom: 10px;">📚 技术文档</h4>
+              <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">
+                详细的架构设计、RAG 管道、Agent 协作原理等深度技术文章。
+              </p>
+              <a href="https://github.com/yourusername/Agent_application/tree/main/docs" target="_blank" style="display: block; padding: 10px; background: #10b981; color: white; text-align: center; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.3s;"
+                 onmouseover="this.style.background='#059669';"
+                 onmouseout="this.style.background='#10b981';">
+                查看文档
+              </a>
+            </div>
+          </div>
+
+          <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 30px 0;">
+            <h4 style="color: var(--text-dark); margin-bottom: 15px;">💡 使用建议</h4>
+            <ul style="color: var(--text-secondary); margin-left: 20px;">
+              <li><strong>选择正确的关键词</strong>：输入具体的行业名称或产品类别（如"固态电池"、"AGI芯片"）</li>
+              <li><strong>合理设置迭代次数</strong>：1-2次用于快速查询，3-5次用于深度研究</li>
+              <li><strong>关注数据来源</strong>：每个结论都标注了来源，可点击查看原始片段</li>
+              <li><strong>激活联网搜索</strong>：检查框以获取最新信息，离线模式使用本地文档</li>
+              <li><strong>注意 Token 消耗</strong>：深度研究会消耗更多 Token，请合理规划使用</li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(239, 68, 68, 0.05); padding: 20px; border-radius: 8px; border-left: 4px solid #ef4444;">
+            <p style="color: #ef4444; font-weight: 500; margin-bottom: 10px;">⚠️ 重要提示</p>
+            <p style="color: var(--text-secondary); font-size: 14px;">
+              Web UI 仅供本人使用，需要 API Key 认证。其他访问者可以在 GitHub 上查看源码、学习架构设计和部署指南。
+              不提供公开的在线演示版本，以保护 API 密钥安全和控制 Token 成本。
+            </p>
+          </div>
+
         </div>
-        -->
       </div>
     </section>
 
