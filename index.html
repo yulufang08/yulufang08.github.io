@@ -320,21 +320,21 @@
               fetch(`${FINAGENT_URL}/api/health`)
                 .then(response => {
                   if (response.ok) {
-                    statusBtn.textContent = '✅ 服务运行中 (点击打开)';
+                    statusBtn.textContent = '✅ 服务运行中';
                     statusBtn.style.background = '#d1fae5';
                     statusBtn.style.color = '#065f46';
-                    statusBtn.style.cursor = 'pointer';
-                    statusBtn.onclick = () => openFinagent();
+                    statusBtn.style.cursor = 'default';
+                    // statusBtn.onclick = () => openFinagent();  // 注释：状态按钮不可点击
                     launchBtn.disabled = false;
                   } else {
                     throw new Error('Service not available');
                   }
                 })
                 .catch(error => {
-                  statusBtn.textContent = '❌ 服务未启动 - 请先运行 python finagent_web.py';
+                  statusBtn.textContent = '❌ 服务未启动';
                   statusBtn.style.background = '#fee2e2';
                   statusBtn.style.color = '#991b1b';
-                  statusBtn.style.cursor = 'not-allowed';
+                  statusBtn.style.cursor = 'default';
                   launchBtn.disabled = true;
                 });
             }
@@ -353,7 +353,7 @@
 
             // 事件监听
             launchBtn.addEventListener('click', openFinagent);
-            statusBtn.addEventListener('click', openFinagent);
+            // statusBtn 仅显示状态，不可点击打开
             closeBtn.addEventListener('click', closeFinagent);
 
             // 点击模态框外部关闭
