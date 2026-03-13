@@ -271,16 +271,9 @@
                  style="padding: 12px 14px; background: #374151; color: white; text-align: center; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px; transition: all 0.2s;"
                  onmouseover="this.style.background='#1f2937';"
                  onmouseout="this.style.background='#374151';">
-                📂 GitHub (Private)
+                📂 GitHub Projects
               </a>
             </div>
-
-            <button id="finagent-status-btn"
-               style="width: 100%; padding: 10px 14px; background: #e5e7eb; color: #6b7280; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; cursor: pointer; transition: all 0.2s;"
-               onmouseover="this.style.background='#d1d5db';"
-               onmouseout="this.style.background='#e5e7eb';">
-              ⏳ 检查服务状态...
-            </button>
 
             <!-- Web UI 窗口 (隐藏) -->
             <div id="finagent-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; justify-content: center; align-items: center;">
@@ -308,36 +301,11 @@
           <!-- FinAgent 脚本 -->
           <script>
             const launchBtn = document.getElementById('finagent-launch-btn');
-            const statusBtn = document.getElementById('finagent-status-btn');
             const modal = document.getElementById('finagent-modal');
             const closeBtn = document.getElementById('finagent-close-btn');
             const iframe = document.getElementById('finagent-iframe');
 
             const FINAGENT_URL = 'http://127.0.0.1:5000';
-
-            // 检查服务状态
-            function checkFinagentStatus() {
-              fetch(`${FINAGENT_URL}/api/health`)
-                .then(response => {
-                  if (response.ok) {
-                    statusBtn.textContent = '✅ 服务运行中';
-                    statusBtn.style.background = '#d1fae5';
-                    statusBtn.style.color = '#065f46';
-                    statusBtn.style.cursor = 'default';
-                    // statusBtn.onclick = () => openFinagent();  // 注释：状态按钮不可点击
-                    launchBtn.disabled = false;
-                  } else {
-                    throw new Error('Service not available');
-                  }
-                })
-                .catch(error => {
-                  statusBtn.textContent = '❌ 服务未启动';
-                  statusBtn.style.background = '#fee2e2';
-                  statusBtn.style.color = '#991b1b';
-                  statusBtn.style.cursor = 'default';
-                  launchBtn.disabled = true;
-                });
-            }
 
             // 启动 Web UI
             function openFinagent() {
@@ -353,7 +321,6 @@
 
             // 事件监听
             launchBtn.addEventListener('click', openFinagent);
-            // statusBtn 仅显示状态，不可点击打开
             closeBtn.addEventListener('click', closeFinagent);
 
             // 点击模态框外部关闭
@@ -369,11 +336,6 @@
                 closeFinagent();
               }
             });
-
-            // 页面加载时检查状态
-            document.addEventListener('DOMContentLoaded', checkFinagentStatus);
-            // 每 5 秒检查一次
-            setInterval(checkFinagentStatus, 5000);
           </script>
 
         </div>
