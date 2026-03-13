@@ -224,7 +224,7 @@
         <div class="section-content misc-content">
 
           <!-- FinAgent 项目 -->
-          <div style="border: 1px solid #d1d5db; border-radius: 10px; padding: 20px; margin: 30px 0;">
+          <div style="border: 2px solid #2563eb; border-radius: 10px; padding: 20px; margin: 30px 0; background: #f0f9ff;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; margin-bottom: 12px;">
               <div style="flex: 1;">
                 <h3 style="margin: 0; color: #1f2937; font-size: 18px; font-weight: 600;">🔬 FinAgent - Industrial Research AI</h3>
@@ -245,24 +245,136 @@
                 <li style="margin: 4px 0;">Real-time web search with source authority verification</li>
                 <li style="margin: 4px 0;">Multi-dimensional analysis: supply chain, competition, finance</li>
                 <li style="margin: 4px 0;">Full source traceability with snippet IDs</li>
+                <li style="margin: 4px 0;">Free Groq API integration (unlimited tokens)</li>
               </ul>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr auto; gap: 12px;">
-              <a href="https://github.com/yourusername/Agent_application" target="_blank"
-                 style="padding: 10px 14px; background: #2563eb; color: white; text-align: center; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 13px; transition: all 0.2s;"
-                 onmouseover="this.style.background='#1d4ed8';"
-                 onmouseout="this.style.background='#2563eb';">
-                → GitHub Project
-              </a>
-              <a href="http://localhost:5000" title="Local access only"
-                 style="padding: 10px 14px; background: #10b981; color: white; text-align: center; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 13px; transition: all 0.2s; cursor: pointer;"
-                 onmouseover="this.style.background='#059669';"
-                 onmouseout="this.style.background='#10b981';">
-                🔒 Access
+            <!-- Web UI 使用说明 -->
+            <div style="background: #fef3c7; padding: 12px 15px; border-radius: 6px; margin-bottom: 15px; border-left: 3px solid #f59e0b;">
+              <p style="margin: 0 0 8px 0; color: #92400e; font-weight: 600; font-size: 13px;">⚡ 如何使用 Web UI</p>
+              <ol style="margin: 0; padding-left: 20px; color: #92400e; font-size: 13px;">
+                <li style="margin: 4px 0;">打开终端，进入项目目录</li>
+                <li style="margin: 4px 0;">运行：<code style="background: #fff3cd; padding: 2px 6px; border-radius: 3px;">python finagent_web.py</code></li>
+                <li style="margin: 4px 0;">点击下方"🚀 启动 Web UI"按钮</li>
+                <li style="margin: 4px 0;">在弹出窗口中输入 API Key 开始使用</li>
+              </ol>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+              <button id="finagent-launch-btn"
+                 style="padding: 12px 14px; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s;"
+                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(37,99,235,0.3)';"
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                🚀 启动 Web UI
+              </button>
+              <a href="https://github.com/yulufang08/Agent_application" target="_blank"
+                 style="padding: 12px 14px; background: #374151; color: white; text-align: center; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px; transition: all 0.2s;"
+                 onmouseover="this.style.background='#1f2937';"
+                 onmouseout="this.style.background='#374151';">
+                📂 GitHub (Private)
               </a>
             </div>
+
+            <button id="finagent-status-btn"
+               style="width: 100%; padding: 10px 14px; background: #e5e7eb; color: #6b7280; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; cursor: pointer; transition: all 0.2s;"
+               onmouseover="this.style.background='#d1d5db';"
+               onmouseout="this.style.background='#e5e7eb';">
+              ⏳ 检查服务状态...
+            </button>
+
+            <!-- Web UI 窗口 (隐藏) -->
+            <div id="finagent-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; justify-content: center; align-items: center;">
+              <div style="position: relative; width: 90%; height: 90%; max-width: 1200px; background: white; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); display: flex; flex-direction: column;">
+
+                <!-- 标题栏 -->
+                <div style="padding: 16px 20px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+                  <h3 style="margin: 0; color: white; font-size: 18px; font-weight: 600;">🔬 FinAgent Web UI</h3>
+                  <button id="finagent-close-btn"
+                     style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 32px; height: 32px; border-radius: 4px; transition: all 0.2s;"
+                     onmouseover="this.style.background='rgba(255,255,255,0.3)';"
+                     onmouseout="this.style.background='rgba(255,255,255,0.2)';">
+                    ✕
+                  </button>
+                </div>
+
+                <!-- 内容区 -->
+                <iframe id="finagent-iframe"
+                   style="flex: 1; border: none; width: 100%; border-radius: 0 0 12px 12px; background: white;">
+                </iframe>
+              </div>
+            </div>
           </div>
+
+          <!-- FinAgent 脚本 -->
+          <script>
+            const launchBtn = document.getElementById('finagent-launch-btn');
+            const statusBtn = document.getElementById('finagent-status-btn');
+            const modal = document.getElementById('finagent-modal');
+            const closeBtn = document.getElementById('finagent-close-btn');
+            const iframe = document.getElementById('finagent-iframe');
+
+            const FINAGENT_URL = 'http://localhost:5000';
+
+            // 检查服务状态
+            function checkFinagentStatus() {
+              fetch(`${FINAGENT_URL}/api/health`)
+                .then(response => {
+                  if (response.ok) {
+                    statusBtn.textContent = '✅ 服务运行中 (点击打开)';
+                    statusBtn.style.background = '#d1fae5';
+                    statusBtn.style.color = '#065f46';
+                    statusBtn.style.cursor = 'pointer';
+                    statusBtn.onclick = () => openFinagent();
+                    launchBtn.disabled = false;
+                  } else {
+                    throw new Error('Service not available');
+                  }
+                })
+                .catch(error => {
+                  statusBtn.textContent = '❌ 服务未启动 - 请先运行 python finagent_web.py';
+                  statusBtn.style.background = '#fee2e2';
+                  statusBtn.style.color = '#991b1b';
+                  statusBtn.style.cursor = 'not-allowed';
+                  launchBtn.disabled = true;
+                });
+            }
+
+            // 启动 Web UI
+            function openFinagent() {
+              iframe.src = FINAGENT_URL;
+              modal.style.display = 'flex';
+            }
+
+            // 关闭 Web UI
+            function closeFinagent() {
+              modal.style.display = 'none';
+              iframe.src = '';
+            }
+
+            // 事件监听
+            launchBtn.addEventListener('click', checkFinagentStatus);
+            launchBtn.addEventListener('click', openFinagent);
+            closeBtn.addEventListener('click', closeFinagent);
+
+            // 点击模态框外部关闭
+            modal.addEventListener('click', (e) => {
+              if (e.target === modal) {
+                closeFinagent();
+              }
+            });
+
+            // 按 Esc 关闭
+            document.addEventListener('keydown', (e) => {
+              if (e.key === 'Escape' && modal.style.display === 'flex') {
+                closeFinagent();
+              }
+            });
+
+            // 页面加载时检查状态
+            document.addEventListener('DOMContentLoaded', checkFinagentStatus);
+            // 每 5 秒检查一次
+            setInterval(checkFinagentStatus, 5000);
+          </script>
 
         </div>
       </div>
