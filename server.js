@@ -159,8 +159,7 @@ app.get('/api/feedbacks', (req, res) => {
   }
 });
 
-// Blog system - in-memory token storage
-const blogTokens = new Map();
+// Blog system - public (no authentication required)
 const postsFile = path.join(__dirname, 'blogs', 'posts.json');
 
 // Initialize blogs directory if it doesn't exist
@@ -174,61 +173,10 @@ if (!fs.existsSync(postsFile)) {
   fs.writeFileSync(postsFile, JSON.stringify({ posts: [] }, null, 2));
 }
 
-// Blog authentication middleware
-function verifyBlogToken(req, res, next) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'Unauthorized - missing token' });
-  }
+// Blog authentication removed - blog is now public
 
-  const token = authHeader.slice(7); // Remove 'Bearer ' prefix
-  const tokenData = blogTokens.get(token);
-
-  if (!tokenData || tokenData.expiresAt < Date.now()) {
-    blogTokens.delete(token);
-    return res.status(401).json({ error: 'Unauthorized - token expired' });
-  }
-
-  req.blogToken = token;
-  next();
-}
-
-// POST /api/blog/auth - Verify password and get token
-app.post('/api/blog/auth', (req, res) => {
-  try {
-    const { password } = req.body;
-
-    if (!password) {
-      return res.status(400).json({ error: 'Password required' });
-    }
-
-    // Hash the provided password and compare
-    const passwordHash = crypto.createHash('sha256').update(password).digest('hex');
-    if (passwordHash !== blogConfig.passwordHash) {
-      return res.status(401).json({ error: 'Invalid password' });
-    }
-
-    // Generate token
-    const token = crypto.randomUUID();
-    const expiresAt = Date.now() + (blogConfig.tokenExpiryHours * 60 * 60 * 1000);
-
-    // Store token
-    blogTokens.set(token, { expiresAt });
-
-    res.json({
-      success: true,
-      token: token,
-      expiresAt: expiresAt,
-      expiresIn: blogConfig.tokenExpiryHours * 60 * 60 // seconds
-    });
-  } catch (error) {
-    console.error('Error in blog auth:', error);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-// GET /api/blog/posts - Get list of blog posts
-app.get('/api/blog/posts', verifyBlogToken, (req, res) => {
+// GET /api/blog/posts - Get list of blog posts (public)
+app.get('/api/blog/posts', (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(postsFile, 'utf8'));
     // Return posts without content (content will be fetched separately)
@@ -245,8 +193,8 @@ app.get('/api/blog/posts', verifyBlogToken, (req, res) => {
   }
 });
 
-// GET /api/blog/posts/:id - Get single blog post
-app.get('/api/blog/posts/:id', verifyBlogToken, (req, res) => {
+// GET /api/blog/posts/:id - Get single blog post (public)
+app.get('/api/blog/posts/:id', (req, res) => {
   try {
     const postId = parseInt(req.params.id);
     const data = JSON.parse(fs.readFileSync(postsFile, 'utf8'));
