@@ -3,7 +3,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const emailConfig = require('./email-config');
+const blogConfig = require('./blog-config');
 
 const app = express();
 const PORT = 3000;
@@ -154,6 +156,181 @@ app.get('/api/feedbacks', (req, res) => {
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: 'Failed to read feedbacks' });
+  }
+});
+
+// Blog system - in-memory token storage
+const blogTokens = new Map();
+const postsFile = path.join(__dirname, 'blogs', 'posts.json');
+
+// Initialize blogs directory if it doesn't exist
+const blogsDir = path.join(__dirname, 'blogs');
+if (!fs.existsSync(blogsDir)) {
+  fs.mkdirSync(blogsDir, { recursive: true });
+}
+
+// Initialize posts file if it doesn't exist
+if (!fs.existsSync(postsFile)) {
+  fs.writeFileSync(postsFile, JSON.stringify({ posts: [] }, null, 2));
+}
+
+// Blog authentication middleware
+function verifyBlogToken(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Unauthorized - missing token' });
+  }
+
+  const token = authHeader.slice(7); // Remove 'Bearer ' prefix
+  const tokenData = blogTokens.get(token);
+
+  if (!tokenData || tokenData.expiresAt < Date.now()) {
+    blogTokens.delete(token);
+    return res.status(401).json({ error: 'Unauthorized - token expired' });
+  }
+
+  req.blogToken = token;
+  next();
+}
+
+// POST /api/blog/auth - Verify password and get token
+app.post('/api/blog/auth', (req, res) => {
+  try {
+    const { password } = req.body;
+
+    if (!password) {
+      return res.status(400).json({ error: 'Password required' });
+    }
+
+    // Hash the provided password and compare
+    const passwordHash = crypto.createHash('sha256').update(password).digest('hex');
+    if (passwordHash !== blogConfig.passwordHash) {
+      return res.status(401).json({ error: 'Invalid password' });
+    }
+
+    // Generate token
+    const token = crypto.randomUUID();
+    const expiresAt = Date.now() + (blogConfig.tokenExpiryHours * 60 * 60 * 1000);
+
+    // Store token
+    blogTokens.set(token, { expiresAt });
+
+    res.json({
+      success: true,
+      token: token,
+      expiresAt: expiresAt,
+      expiresIn: blogConfig.tokenExpiryHours * 60 * 60 // seconds
+    });
+  } catch (error) {
+    console.error('Error in blog auth:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// GET /api/blog/posts - Get list of blog posts
+app.get('/api/blog/posts', verifyBlogToken, (req, res) => {
+  try {
+    const data = JSON.parse(fs.readFileSync(postsFile, 'utf8'));
+    // Return posts without content (content will be fetched separately)
+    const postList = data.posts.map(post => ({
+      id: post.id,
+      title: post.title,
+      date: post.date,
+      tags: post.tags || []
+    }));
+    res.json({ posts: postList });
+  } catch (error) {
+    console.error('Error reading posts:', error);
+    res.status(500).json({ error: 'Failed to read posts' });
+  }
+});
+
+// GET /api/blog/posts/:id - Get single blog post
+app.get('/api/blog/posts/:id', verifyBlogToken, (req, res) => {
+  try {
+    const postId = parseInt(req.params.id);
+    const data = JSON.parse(fs.readFileSync(postsFile, 'utf8'));
+    const post = data.posts.find(p => p.id === postId);
+
+    if (!post) {
+      return res.status(404).json({ error: 'Post not found' });
+    }
+
+    res.json(post);
+  } catch (error) {
+    console.error('Error reading post:', error);
+    res.status(500).json({ error: 'Failed to read post' });
+  }
+});
+
+// Comments file (public comments, no authentication required)
+const commentsFile = path.join(__dirname, 'blogs', 'comments.json');
+
+// Initialize comments file if it doesn't exist
+if (!fs.existsSync(commentsFile)) {
+  fs.writeFileSync(commentsFile, JSON.stringify({ comments: {} }, null, 2));
+}
+
+// GET /api/blog/posts/:id/comments - Get comments for a post (public)
+app.get('/api/blog/posts/:id/comments', (req, res) => {
+  try {
+    const postId = req.params.id;
+    const data = JSON.parse(fs.readFileSync(commentsFile, 'utf8'));
+    const comments = data.comments[postId] || [];
+    res.json({ comments: comments });
+  } catch (error) {
+    console.error('Error reading comments:', error);
+    res.status(500).json({ error: 'Failed to read comments' });
+  }
+});
+
+// POST /api/blog/posts/:id/comments - Submit a comment (public)
+app.post('/api/blog/posts/:id/comments', (req, res) => {
+  try {
+    const postId = req.params.id;
+    const { name, content } = req.body;
+
+    // Validate input
+    if (!content || typeof content !== 'string' || content.trim() === '') {
+      return res.status(400).json({ error: 'Comment content is required' });
+    }
+
+    if (content.length > 500) {
+      return res.status(400).json({ error: 'Comment too long (max 500 chars)' });
+    }
+
+    // Read existing comments
+    const data = JSON.parse(fs.readFileSync(commentsFile, 'utf8'));
+
+    // Create new comment
+    const newComment = {
+      id: Date.now(),
+      name: (name && typeof name === 'string' && name.trim()) ? name.trim() : '匿名',
+      content: content.trim(),
+      timestamp: new Date().toISOString()
+    };
+
+    // Initialize post comments array if needed
+    if (!data.comments[postId]) {
+      data.comments[postId] = [];
+    }
+
+    // Add comment
+    data.comments[postId].push(newComment);
+
+    // Write back to file
+    fs.writeFileSync(commentsFile, JSON.stringify(data, null, 2));
+
+    console.log(`[${new Date().toISOString()}] New comment on post ${postId}: ${newComment.name}`);
+
+    res.json({
+      success: true,
+      message: 'Comment posted successfully',
+      comment: newComment
+    });
+  } catch (error) {
+    console.error('Error posting comment:', error);
+    res.status(500).json({ error: 'Failed to post comment' });
   }
 });
 

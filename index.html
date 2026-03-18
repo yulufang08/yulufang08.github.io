@@ -28,6 +28,7 @@
       <ul class="nav-links">
         <li><a href="#" data-section="home" data-i18n="navHome">Home</a></li>
         <li><a href="#" data-section="publications" data-i18n="navPublications">Publications</a></li>
+        <li><a href="#" data-section="blog" data-i18n="navBlog">Blog</a></li>
         <li><a href="#" data-section="misc" data-i18n="navMisc">Miscellaneous</a></li>
       </ul>
       <div class="header-actions">
@@ -218,6 +219,21 @@
       </div>
     </section>
 
+    <section id="blog" class="section">
+      <div class="section-box">
+        <h2 class="block-title" data-i18n="blogTitle">Blog</h2>
+        <div id="blog-content">
+          <div id="blog-post-list" class="blog-post-list">
+            <!-- Posts will be loaded here -->
+          </div>
+          <div id="blog-post-detail" class="blog-post-detail" style="display: none;">
+            <button id="blog-back-btn" class="blog-back-btn">← Back to Posts</button>
+            <div id="blog-post-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="misc" class="section">
       <div class="section-box">
         <h2 class="block-title" data-i18n="miscTitle">Miscellaneous</h2>
@@ -344,6 +360,20 @@
 
     <p class="last-updated" data-i18n="lastUpdated">Last updated: Month Year</p>
   </main>
+
+  <!-- Blog Authentication Modal -->
+  <div id="blog-auth-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box">
+      <h2 data-i18n="blogAuthTitle">Private Access</h2>
+      <p data-i18n="blogAuthPrompt">Please enter the access password</p>
+      <input type="password" id="blog-password-input" class="modal-input" placeholder="Password" aria-label="Blog access password">
+      <div class="modal-actions">
+        <button id="blog-auth-submit" class="modal-btn modal-btn-primary" data-i18n="blogAuthSubmit">Verify</button>
+        <button id="blog-auth-cancel" class="modal-btn modal-btn-secondary" data-i18n="blogAuthCancel">Cancel</button>
+      </div>
+      <p id="blog-auth-error" class="error-msg" style="display: none;"></p>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <p data-i18n="footerNote">Feel free to send feedback via <a href="anonymous.html" target="_blank" rel="noopener noreferrer">Anonymous Feedback</a>.</p>

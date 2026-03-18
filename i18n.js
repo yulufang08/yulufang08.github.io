@@ -6,6 +6,7 @@
     siteTitle: 'Yulu\'s homepage',
     navHome: 'Home',
     navPublications: 'Publications',
+    navBlog: 'Blog',
     navMisc: 'Miscellaneous',
     heroName: 'Yulu Fang',
     heroAffiliation: 'Shanghai Jiao Tong University',
@@ -55,6 +56,11 @@
     anonymousSubmit: 'Submit',
     anonymousSuccess: 'Thank you for your feedback!',
     anonymousBack: 'Back to home',
+    blogTitle: 'Blog',
+    blogAuthTitle: 'Private Access',
+    blogAuthPrompt: 'Please enter the access password',
+    blogAuthSubmit: 'Verify',
+    blogAuthCancel: 'Cancel',
   };
 
   function applyTranslations() {

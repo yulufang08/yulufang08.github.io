@@ -1,0 +1,40 @@
+# Sensitive Configuration
+# 敏感配置文件（包含密码哈希）- 绝对不能上传
+blog-config.js
+
+# Private Content
+# 私密内容（个人博客文章、评论和用户反馈）- 不希望公开
+blogs/
+feedback.json
+
+# Dependencies
+# Node.js 依赖（可通过 npm install 自动安装）
+node_modules/
+package-lock.json
+
+# Environment Variables
+# 环境变量（预防性排除）
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# System Files
+# 操作系统文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE / Editor
+# 编辑器配置（可选）
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build / Output
+dist/
+build/
+*.log
